@@ -11,27 +11,30 @@ checkTheme();
 checkboxRef.addEventListener('change', changeTheme);
 
 function changeTheme(event) {
-       if (event.target.checked) {
-           bodyRef.classList.add(Theme.DARK);
-           bodyRef.classList.remove(Theme.LIGHT);
-        localStorage.setItem('theme', Theme.DARK);
-        
-    } else {
-           bodyRef.classList.add(Theme.LIGHT);
-           bodyRef.classList.remove(Theme.DARK);
-        localStorage.setItem('theme', Theme.LIGHT);
-    }
-};
+  if (event.target.checked) {
+    addDark();
+    localStorage.setItem('theme', Theme.DARK);
+  } else {
+    addLight();
+    localStorage.setItem('theme', Theme.LIGHT);
+  }
+}
 
 function checkTheme() {
-    if (themeRef === Theme.DARK) {
-        bodyRef.classList.add(Theme.DARK);
-        bodyRef.classList.remove(Theme.LIGHT);
-        checkboxRef.checked = true;
-    
-} else if (themeRef === Theme.LIGHT) {
-        bodyRef.classList.add(Theme.LIGHT);
-        bodyRef.classList.remove(Theme.DARK);
-    
+  if (themeRef === Theme.DARK) {
+    addDark();
+    checkboxRef.checked = true;
+  } else if (themeRef === Theme.LIGHT) {
+    addLight();
+  }
 }
-};
+
+function addDark() {
+  bodyRef.classList.add(Theme.DARK);
+  bodyRef.classList.remove(Theme.LIGHT);
+}
+
+function addLight() {
+  bodyRef.classList.add(Theme.LIGHT);
+  bodyRef.classList.remove(Theme.DARK);
+}
