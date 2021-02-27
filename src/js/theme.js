@@ -12,29 +12,27 @@ checkboxRef.addEventListener('change', changeTheme);
 
 function changeTheme(event) {
   if (event.target.checked) {
-    addDark();
+    updateTheme(Theme.DARK, Theme.LIGHT);
+
     localStorage.setItem('theme', Theme.DARK);
   } else {
-    addLight();
+    updateTheme(Theme.LIGHT, Theme.DARK);
+
     localStorage.setItem('theme', Theme.LIGHT);
   }
 }
 
 function checkTheme() {
   if (themeRef === Theme.DARK) {
-    addDark();
+    updateTheme(Theme.DARK, Theme.LIGHT);
+
     checkboxRef.checked = true;
   } else if (themeRef === Theme.LIGHT) {
-    addLight();
+    updateTheme(Theme.LIGHT, Theme.DARK);
   }
 }
 
-function addDark() {
-  bodyRef.classList.add(Theme.DARK);
-  bodyRef.classList.remove(Theme.LIGHT);
-}
-
-function addLight() {
-  bodyRef.classList.add(Theme.LIGHT);
-  bodyRef.classList.remove(Theme.DARK);
+function updateTheme(addClass, remClass) {
+  bodyRef.classList.add(addClass);
+  bodyRef.classList.remove(remClass);
 }
